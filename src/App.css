@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+.searchInputs {
+  margin-top: 105px;
+  margin-bottom: 100px;
+}
+
+.search input{
+  background-color: white;
+  border: 0;
+  border-radius: 2px;
+  padding: 5px;
+  height: 30px;
+  font-size: 18px;
+}
+
+
+
+/* 
+.searchIcon {
+height: 60px;
+width: 50px;
+background-color: white;
+display: grid;
+place-items: center;
+}
+ */
+
+ .blog-preview {
+   padding: 15px;
+ }

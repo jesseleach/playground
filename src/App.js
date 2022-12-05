@@ -1,19 +1,28 @@
-import Navbar from "./Navbar";
-import Home from "./Home";
-import { useState } from "react";
+import React from "react";
+import "./App.css";
+import SearchBar from "./Components/SearchBar";
+import BlogList from "./BlogList";
+import { useState, useEffect } from "react";
+
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
+  const [blogs, setBlogs] = useState(null);
 
- 
+  useEffect(() => {
+    fetch("https://www.reddit.com/r/Bushwick.json")
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        setBlogs(res.data.children);
+      });
+  }, []);
 
   return (
     <div className="App">
-      <Navbar></Navbar>
-      <div className="content">
-        <Home></Home>
-      </div>
+      <SearchBar placeholder="Enter a Blog Name..." data={blogs} />
+      
+      {blogs && <BlogList blogs={blogs} title="All Blogs" />}
     </div>
   );
 }
