@@ -1,12 +1,22 @@
 import React from "react";
 import "./App.css";
-import SearchBar from "./Components/SearchBar";
 import BlogList from "./BlogList";
 import { useState, useEffect } from "react";
-
+import Navbar from "./Navbar";
 
 function App() {
-  const [blogs, setBlogs] = useState(null);
+  const [blogs, setBlogs] = useState([]);
+  const [searchTerm, setSearchTerm] = useState();
+  const filteredBlogs = blogs.filter((blog) => {
+    if (!searchTerm) {
+      return true;
+    }
+    return blog.data.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  function handleChange(event) {
+    setSearchTerm(event.target.value);
+  }
 
   useEffect(() => {
     fetch("https://www.reddit.com/r/Bushwick.json")
@@ -20,9 +30,18 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar placeholder="Enter a Blog Name..." data={blogs} />
-      
-      {blogs && <BlogList blogs={blogs} title="All Blogs" />}
+      <Navbar/>
+      <div className="search">
+        <div className="searchInputs">
+          <input
+            type="text"
+            placeholder={"Enter a Blog Name..."}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
+
+      <BlogList blogs={filteredBlogs} title="All Blogz" />
     </div>
   );
 }
