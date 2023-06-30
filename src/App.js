@@ -30,14 +30,18 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
+      
       <div className="search">
+      
         <div className="searchInputs">
-          <input
+        <Navbar/>
+          <input  
             type="text"
             placeholder={"Enter a Blog Name..."}
             onChange={handleChange}
+           
           />
+        
         </div>
       </div>
 

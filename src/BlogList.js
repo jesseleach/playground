@@ -13,11 +13,10 @@ const BlogList = ({ blogs, title }) => {
               </a>
             </h2>
             <p>Written by {blog.data.author}</p>
-            {/* make so that only shows if defined */}
+            <p>Written by {blog.data.author}</p>
+            <p className="selfText">{blog.data.selftext}</p>
             <p>
-              {hasImage && (
-                <img src={blog.data.preview.images[0].source.url} />
-              )}
+            
             </p>
           </div>
         );
