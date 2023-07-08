@@ -37,7 +37,7 @@ function App() {
         <Navbar/>
           <input  
             type="text"
-            placeholder={"Enter a Blog Name..."}
+            placeholder={"Enter a Search Term..."}
             onChange={handleChange}
            
           />

@@ -2,7 +2,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-        <h1>Reddit Project</h1>
+        <h1>Bushwick Reddit Search Site</h1>
         </nav>
     );
 }
